@@ -42,7 +42,7 @@ public partial class BookStoreContext : DbContext
             entity.Property(e => e.Isbn)
                 .HasMaxLength(50)
                 .HasColumnName("ISBN");
-            entity.Property(e => e.Price).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.Price).HasColumnType("float");
             entity.Property(e => e.Summary).HasMaxLength(50);
             entity.Property(e => e.Title).HasMaxLength(50);
 

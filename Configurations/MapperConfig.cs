@@ -14,5 +14,18 @@ class MapperConfig : Profile
         CreateMap<AuthorCreateDTO, Author>().ReverseMap();
         CreateMap<AuthorUpdateDTO, Author>().ReverseMap();
         CreateMap<AuthorReadOnlyDTO, Author>().ReverseMap();
+
+        // CreateMap<BookReadonlyDTO, Book>().ReverseMap();
+        CreateMap<Book, BookReadonlyDTO>()
+            .ForMember(q => q.AuthorName, d => d.MapFrom(map => $"{map.Author.FirstName} {map.Author.LastName}"))
+            .ReverseMap();
+
+        CreateMap<Book, BookDetailsDTO>()
+            .ForMember(q => q.AuthorName, d => d.MapFrom(map => $"{map.Author.FirstName} {map.Author.LastName}"))
+            .ReverseMap();
+
+        CreateMap<BookCreateDTO, Book>().ReverseMap();
+        CreateMap<BookUpdateDTO, Book>().ReverseMap();
+
     }
 }
